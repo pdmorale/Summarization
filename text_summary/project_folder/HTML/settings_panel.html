@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="ja">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style>
+        .site {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: 1fr;
+            grid-template-columns: 1fr;
+            margin: 10px;
+            padding: 10px;
+            border: solid 2px #000;
+        }
+
+            .site > * {
+                padding: 10px;
+                font-size: 18px;
+            }
+
+        #custombox {width: 30%; padding: 0px 10px; margin: 0px;}
+        #custombox2 {width: 20%; padding: 0px 10px; margin: 0px;}
+        #customtext {width: 8%; padding: 8px 10px; margin: 0px;}
+
+        input[type=text], select {
+            width: 40%;
+            padding: 8px 10px;
+            margin: 5px 0;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: rgb(28, 194, 206);
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        #custom {color:#f2f2f2; padding:0%; margin: 0%;}
+    </style>
+</head>
+
+<body>
+    <!
+    FORM
+    -->
+    <h2>Summarizer Activity Settings</h2>
+
+    <div>
+        <form id="regForm" action="/action_page.php">
+        <div class="tab">
+            <div class="site">
+                Please choose one the following input modes. Text language is automatically recognized.
+                The visualization output is an html file located at the Output directory of the project folder.
+
+            </div><br>
+
+            <h3>------ Input Options ------------------------------------</h3>
+            <input type="radio" name="check" value="Clipboard" id="Clip" checked> Clipboard<br>
+            <input type="radio" name="check" value="Document" id ="Doc"> Document input (e.g.: .docx, .pdf)<br>
+            <input type="radio" name="check" value="Outlook" id="Outl"> Outlook:<br>
+            &nbsp &nbsp &nbsp e-mail account: <input type="text" placeholder="robot@uipath.com" id="Email" value=""> &nbsp
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            <h3>----------------------------------------------------------</h3>
+
+            <input type="checkbox" name="check1" id="GraphRep" value="trim"> Graphical representation of main subjects in text. <br>
+            <input type="checkbox" name="check1" id="Google" value="GT"> Google translate API Language:
+            <select name="dropdown" id="custombox">
+                <option value="Eng">English</option>
+                <option value="Jap">Japanese</option>
+            </select>
+
+            <br><br>
+            <input type="submit" value="Submit Settings" id="SubmitButton">
+        </div>
+
+        <div class="tab"> <h3>Advanced Settings:</h3>
+            <p>No. of emails:
+            <input type="text" placeholder="int" id="customtext" oninput="this.className = ''" name="NumOfEmails" value=""></p>
+            <p>Target folder: <input type="text" placeholder="Inbox..." oninput="this.className = ''" name="TargetFolder"></p>
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Go Back</button>
+        </div>
+
+        </form>
+    </div>
+
+
+    <script>
+	//For Saved Path form
+	// <p>Saved path: &nbsp <input type="text" placeholder="C://Desktop/..." id="SavePath" oninput="this.className = ''" name="SavePath"></p>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+    var x = document.getElementsByClassName("tab");
+    x[currentTab + 1].style.display = "none";
+
+        if (typeof String.prototype.trim !== 'function') {
+            String.prototype.trim = function () {
+                return this.replace(/^\s+|\s+$/g, '');
+            }
+        }
+
+        function showTab(n) {
+            // This function will display the specified tab of the form...
+            var x = document.getElementsByClassName("tab");
+            x[n].style.display = "block";
+            //... and fix the Previous/Next buttons:
+            if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == (x.length - 1)) {
+                //alert(x.length - 1)
+                //document.getElementById("nextBtn").innerHTML = "none"
+                document.getElementById("nextBtn").style.display = "none";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "Advanced Settings";
+                document.getElementById("nextBtn").style.display = "inline"
+            }
+        }
+
+        function nextPrev(n) {
+            //alert("asd")
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName("tab");
+            // Exit the function if any field in the current tab is invalid:
+            //if (n == 1  && validateForm()) return false;
+
+            // Hide the current tab:
+            x[currentTab].style.display = "none";
+            // Increase or decrease the current tab by 1:
+            currentTab = currentTab + n;
+
+            showTab(currentTab);
+        }
+
+        function myFunction() {
+            //var temporary = document.forms[0];
+            //var NoEmails = document.getElementById("customtext").value;// + " ";
+
+            if (temporary[2].checked) {
+                txt = txt.replace(/ /g, "");
+                //alert(txt);
+            }
+            //}
+            document.getElementById("result").value = txt;
+        }
+
+        document.getElementById("SubmitButton").onclick = function () {
+
+            // After the values have been submited we gather all the relevant data
+            var ClipCh = document.getElementById("Clip").checked;
+            var OutlookCh = document.getElementById("Outl").checked;
+            var DocCh = document.getElementById("Doc").checked;
+            var GoogleT = document.getElementById("Google").checked;
+            var Graph = document.getElementById("GraphRep").checked;
+            //alert(GoogleT)
+            var elem = document.getElementById("custombox");
+            var Lang = elem.options[elem.selectedIndex].text;
+
+            var NEmails = document.getElementById("customtext").value;
+            //var SavePath = document.getElementById("SavePath").value;
+            var key = 0 // Default for clipboard
+
+            NumEmails = Number(NEmails)
+            //this.getField("testo").required = !event.target.isBoxChecked(0);
+
+            if(GoogleT === true){
+                setLang = Lang
+            }
+            else{
+                setLang = ""
+            }
+
+            if(DocCh === true){
+                key = 2
+                //document.getElementById("Doc").required=true
+                //this.getField("Text")
+            }
+
+            // Validation for outlook
+            if(OutlookCh === true){
+                var Bool = false
+
+                // Validation check if interger at number
+                if(typeof NumEmails === 'number'){
+                    // yes it is numeric
+
+                    if(NumEmails % 1 === 0){
+                        // yes it's an integer.
+                        var OutlAcc = document.getElementById("Email").value
+                        //alert(OutlAcc)
+                        Bool = true
+                        key = 1
+                    }
+                    else
+                    alert("Please enter an interger")
+                }
+                else
+                alert("Not number, please enter an interger")
+
+                //if()
+
+            }
+
+
+            // Contruct a json string which contain the values
+            var OutputString = "{\"Key\":\"" + key + "\","+
+            "\"Account\":\"" + OutlAcc + "\"," +
+            "\"GoogleTrans\":\"" + setLang + "\"," +
+            "\"NumOfEmails\":\"" + NumEmails + "\"," +
+            "\"GraphVis\":\"" + Graph + "\"}";// + "\"," +
+            //"\"SavePath\":\"" + SavePath + "\"}";
+            //alert(OutputString)
+            window.external.setResult(OutputString);
+
+            //Same as above Get Rid of
+            //if(key = 1 && Bool === true){
+                //alert("it worked!!!")
+                //window.external.setResult(OutputString);
+            //}
+        };
+    </script>
+
+</body>
+</html>

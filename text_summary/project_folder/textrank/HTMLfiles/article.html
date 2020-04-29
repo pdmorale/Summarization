@@ -1,0 +1,51 @@
+
+<html>
+<head>
+  <script type="text/javascript" src="VIS/dist/vis.js"></script>
+  <link href="VIS/dist/vis.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<div id="VIS_draw"></div>
+
+<script type="text/javascript">
+  var nodes = [{'group': 'Event', 'id': 32, 'label': 'market'}, {'group': 'Event', 'id': 31, 'label': 'Keywords'}, {'group': 'Event', 'id': 39, 'label': 'said'}, {'group': 'Event', 'id': 4, 'label': 'car sales'}, {'group': 'Event', 'id': 6, 'label': 'automobile'}, {'group': 'Event', 'id': 8, 'label': 'profits'}, {'group': 'Event', 'id': 10, 'label': 'global'}, {'group': 'Event', 'id': 12, 'label': 'globally'}, {'group': 'Event', 'id': 14, 'label': 'chinese'}, {'group': 'Event', 'id': 16, 'label': 'profit probably'}, {'group': 'Event', 'id': 18, 'label': 'little'}, {'group': 'Event', 'id': 20, 'label': 'chemicals'}, {'group': 'Event', 'id': 22, 'label': 'basf'}, {'group': 'Event', 'id': 24, 'label': 'geely'}, {'group': 'Event', 'id': 26, 'label': 'monday'}, {'group': 'Event', 'id': 28, 'label': 'ago'}, {'group': 'Event', 'id': 30, 'label': 'nearly'}, {'group': 'Event', 'id': 33, 'label': 'remains'}, {'group': 'Event', 'id': 34, 'label': 'GELYF'}, {'group': 'Event', 'id': 36, 'label': 'company'}, {'group': 'Event', 'id': 38, 'label': 'it'}, {'group': 'Event', 'id': 40, 'label': "China's car sales rose for first time in year last month, but world's largest market remains stuck in deep slump that shows little sign of ending soon as country's massive economy slows."}, {'group': 'Event', 'id': 61, 'label': 'Content'}, {'group': 'Event', 'id': 42, 'label': ", one of China's biggest car makers, said late Monday that its net profit probably plunged by 40% in first half of year."}, {'group': 'Event', 'id': 44, 'label': "In June alone, company's car sales fell 29%."}, {'group': 'Event', 'id': 46, 'label': 'The slump was caused mostly by bigger decrease in China sales than it had expected, company said.'}, {'group': 'Event', 'id': 48, 'label': "Geely's sales fell 33% in its home market."}, {'group': 'Event', 'id': 50, 'label': 'said last week that it sold nearly 22% fewer vehicles in China during second quarter than in same period year ago.'}, {'group': 'Event', 'id': 52, 'label': 'posted 12% drop in vehicle sales in China for quarter.'}, {'group': 'Event', 'id': 54, 'label': 'Haima Automobile reported 70% slump in sales for first five months.'}, {'group': 'Event', 'id': 56, 'label': "Chongqing Changan Automobile, Ford's Chinese partner, posted 33% drop during same period."}, {'group': 'Event', 'id': 58, 'label': ', German chemicals giant, on Monday slashed its profits forecast for year on Monday, blaming weak car sales&trade tension between United States&China.'}, {'group': 'Event', 'id': 60, 'label': 'In China, world\'s largest automotive market, decrease was more than twice as high,@around 13%," it said.'}, {'group': 'Event', 'id': 139, 'label': 'China'}, {'group': 'Event', 'id': 83, 'label': 'Location'}, {'group': 'Event', 'id': 116, 'label': 'Ford'}, {'group': 'Event', 'id': 81, 'label': 'Organization'}, {'group': 'Event', 'id': 89, 'label': 'Geely  GELYF'}, {'group': 'Event', 'id': 85, 'label': 'Person'}, {'group': 'Event', 'id': 101, 'label': 'F  '}, {'group': 'Event', 'id': 113, 'label': 'General Motors'}, {'group': 'Event', 'id': 111, 'label': 'GM'}, {'group': 'Event', 'id': 74, 'label': 'Haima Automobile'}, {'group': 'Event', 'id': 117, 'label': 'Chongqing Changan Automobile'}, {'group': 'Event', 'id': 137, 'label': 'BASF'}, {'group': 'Event', 'id': 140, 'label': 'BASFY'}, {'group': 'Event', 'id': 141, 'label': 'the United States'}, {'group': 'Event', 'id': 84, 'label': 'Globally'}];
+  var edges = [{'from': 32, 'label': '', 'to': 31}, {'from': 39, 'label': '', 'to': 31}, {'from': 4, 'label': '', 'to': 31}, {'from': 6, 'label': '', 'to': 31}, {'from': 8, 'label': '', 'to': 31}, {'from': 10, 'label': '', 'to': 31}, {'from': 12, 'label': '', 'to': 31}, {'from': 14, 'label': '', 'to': 31}, {'from': 16, 'label': '', 'to': 31}, {'from': 18, 'label': '', 'to': 31}, {'from': 20, 'label': '', 'to': 31}, {'from': 22, 'label': '', 'to': 31}, {'from': 24, 'label': '', 'to': 31}, {'from': 26, 'label': '', 'to': 31}, {'from': 28, 'label': '', 'to': 31}, {'from': 30, 'label': '', 'to': 31}, {'from': 32, 'label': '', 'to': 33}, {'from': 34, 'label': '', 'to': 39}, {'from': 36, 'label': '', 'to': 39}, {'from': 38, 'label': '', 'to': 39}, {'from': 40, 'label': '', 'to': 61}, {'from': 42, 'label': '', 'to': 61}, {'from': 44, 'label': '', 'to': 61}, {'from': 46, 'label': '', 'to': 61}, {'from': 48, 'label': '', 'to': 61}, {'from': 50, 'label': '', 'to': 61}, {'from': 52, 'label': '', 'to': 61}, {'from': 54, 'label': '', 'to': 61}, {'from': 56, 'label': '', 'to': 61}, {'from': 58, 'label': '', 'to': 61}, {'from': 60, 'label': '', 'to': 61}, {'from': 139, 'label': '', 'to': 83}, {'from': 116, 'label': '', 'to': 81}, {'from': 89, 'label': '', 'to': 85}, {'from': 101, 'label': '', 'to': 85}, {'from': 113, 'label': '', 'to': 81}, {'from': 111, 'label': '', 'to': 81}, {'from': 74, 'label': '', 'to': 81}, {'from': 117, 'label': '', 'to': 81}, {'from': 137, 'label': '', 'to': 81}, {'from': 140, 'label': '', 'to': 81}, {'from': 141, 'label': '', 'to': 83}, {'from': 84, 'label': '', 'to': 85}, {'from': 89, 'label': '', 'to': 139}, {'from': 139, 'label': '', 'to': 89}, {'from': 139, 'label': '', 'to': 101}, {'from': 139, 'label': '', 'to': 116}, {'from': 101, 'label': '', 'to': 139}, {'from': 101, 'label': '', 'to': 116}, {'from': 116, 'label': '', 'to': 139}, {'from': 116, 'label': '', 'to': 101}, {'from': 111, 'label': '', 'to': 113}, {'from': 111, 'label': '', 'to': 139}, {'from': 113, 'label': '', 'to': 111}, {'from': 113, 'label': '', 'to': 139}, {'from': 139, 'label': '', 'to': 111}, {'from': 139, 'label': '', 'to': 113}, {'from': 117, 'label': '', 'to': 116}, {'from': 116, 'label': '', 'to': 117}, {'from': 137, 'label': '', 'to': 139}, {'from': 137, 'label': '', 'to': 141}, {'from': 137, 'label': '', 'to': 140}, {'from': 139, 'label': '', 'to': 137}, {'from': 139, 'label': '', 'to': 141}, {'from': 139, 'label': '', 'to': 140}, {'from': 141, 'label': '', 'to': 137}, {'from': 141, 'label': '', 'to': 139}, {'from': 141, 'label': '', 'to': 140}, {'from': 140, 'label': '', 'to': 137}, {'from': 140, 'label': '', 'to': 139}, {'from': 140, 'label': '', 'to': 141}];
+  
+  var container = document.getElementById("VIS_draw");
+
+  var data = {
+	nodes: nodes,
+	edges: edges
+  };
+
+  var options = {
+	  nodes: {
+		  shape: 'rectangle',
+		  size: 15,
+		  font: {
+			  size: 15
+		  }
+	  },
+	  edges: {
+		  font: {
+			  size: 10,
+			  align: 'center'
+		  },
+		  color: 'red',
+		  arrows: {
+			  to: {enabled: true, scaleFactor: 1.2}
+		  },
+		  smooth: {enabled: true}
+	  },
+	  physics: {
+		  enabled: true
+	  }
+  };
+
+  var network = new vis.Network(container, data, options);
+
+</script>
+</body>
+</html>
