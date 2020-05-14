@@ -18,20 +18,6 @@ This is a .net Framework based automation tool for summarization built using RPA
 
 It generates summarized text report of three types of input: Clipboard, Document and Email. Allows visualization of key concepts and relations from the targeted inputs. Email mode allows to target folder and number of threads to be summarized.
 
-  
-
-
-### Break down into end to end tests
-
-  
-
-Explain what these tests test and why
-
-  
-
-```
-Give an example
-```
 
   
 
@@ -43,14 +29,22 @@ Give an example
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-  
+This project can be run directly as a python activity. However, it can be run by simply cloning respository and running the xaml at UiPath Studio, the necessaries dependencies with the proper nupkg files would be placed on the dependency folder and the python runtime along with the required enviroment would be installed at the first run. On the second run onwards, this part would be skipped.
+
 
 ### Prerequisites
 
-This project can be run directly as a python activity
+The requirements are basically,  
 
-*  [UiPath Studio](https://www.uipath.com/) - RPA developing tool
-* Python environment with the following dependencies
+*  [UiPath Studio](https://www.uipath.com/) - RPA developing software
+
+The UiPath dependencies include:
+
+```DownloadFile: 1.1.0, UnzipProgBar: 1.2.9, Excel: 2.6.2, Mail: 1.5.1, Python: 1.1.6863.33404, WebAPI: 1.4.2, Word: 1.3.2```
+
+among others however they are all contained at the [net452](net452) folder.
+
+* Python environment with the following dependencies:
 
 ```
 - chardet=3.0.4=py36_1003
@@ -87,6 +81,24 @@ For the complete list of dependencies refer to *miniconda.yml* file.
 > **Note:** The *wasabi* dependencies *ginza and ja-ginza modules* are not necessary but required if you are to interested in Japanese language compatibility, whereas [*SpaCy*](https://github.com/explosion/spaCy) and the *en-core-web-sm* module are required for English.
   
 
+### Config
+
+The default settings will taken from settings panel and stored at the following [Config.xlsx](text_summary/Config/Config.xlsx) file. The can be however changed at any time.
+
+|                 |VALUE                          |
+|-----------------|-------------------------------|
+|SavePath         |`'Output/'`                    |
+|summaryRatio     | 0.3 - default                 |
+|sumWordLength    |`Disabled`                     |
+|AnacondaPath     |`Path` default: proj. folder   |
+|EmailWordCount   | 0 - default                   |
+|-----------------|-------------------------------|
+|DocumentSavePath |`Choose Path`                  |
+|EmailAddress     |`Email` only Outlook compat.   |
+|TargetFolder     |`e.g. Inbox, Archive...`       |
+|NumberOfEmails   | example: 3                    |
+
+
 ## Deployment
   
 
@@ -102,9 +114,24 @@ To run it on another windows machine you can pack the python runtime and envirom
 > **Note:** The main xaml of this project has a *installer* section. Therefore the xaml can be runned and work out-of-the-box, downloading the packed environment and runtime (only on the first run).
 
   
+  
 ## Sample Input and Outputs
   
-As the main xaml is runned
+  
+As the main xaml file is runned, the user is prompt to choose modes at the [settings_panel.html](text_summary/HTML/settings_panel.html) file : clipboard, e-mail, document: (pdf, docx, txt) and set values which will also be set as defaults at the [Config.xlsx](text_summary/Config/Config.xlsx) referred above
+
+
+In the Visualization mode would provide two outputs as well a summarized text and a html file with main concepts and their relations as shown the following graph
+
+![](images/sample_1.png)
+
+In Japanese the outputs are the same. This time the sample input corresponds to a news web article
+
+![](images/sample_2.png)
+
+There is also the option to translated cross-language.
+
+> **Note:** The main xaml of this project has a *installer* section. Therefore the xaml can be runned and work out-of-the-box, downloading the packed environment and runtime (only on the first run).
 
 ## Authors
 
